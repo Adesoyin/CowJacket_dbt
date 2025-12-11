@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: dec_raw
+    database: raw
+    schema: dec_raw
+
+    tables:
+      - name: customers
+      - name: loyalty_points
+      - name: order_items
+      - name: orders
+      - name: products
