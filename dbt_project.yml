@@ -38,6 +38,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   cow_jacket:
-    # Applies to all files under models/example/
-    #example:
-      #+materialized: table
+    intermediate:
+      +materialized: view
+      +schema: "int_{{ target.schema }}"
+
+    marts:
+      +materialized: table
+      +schema: "mart_{{ target.schema }}"
+
+    staging:
+      +materialized: incremental
+      +schema: "stg_{{ target.schema }}"
