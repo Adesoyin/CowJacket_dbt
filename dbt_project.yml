@@ -47,5 +47,8 @@ models:
       +schema: "mart_{{ target.schema }}"
 
     staging:
-      +materialized: incremental
+      +materialized: ephemeral
       +schema: "stg_{{ target.schema }}"
+
+on-run-end:
+  - "{{ log_model_run(this.name, this.status, this.rowcount) }}"
