@@ -1,0 +1,11 @@
+exposures:
+  - name: LaunchMart_Analytics
+    type: analysis
+    depends_on:
+      - ref('fct_sales')
+      - ref('dim_date')
+    owner:
+      name: DEC Launchpad
+      email: adeboladesoyin@gmail.com
+    url: https://github.com/Adesoyin/DEC-Launchpad--LaunchMart-Loyalty-Analytics
+    description: "Analyzes customer behavior, revenue performance, and loyalty engagement of LaunchMart e-commerce company that recently launched a loyalty program to increase customer retention."
