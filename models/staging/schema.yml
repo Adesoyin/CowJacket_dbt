@@ -8,8 +8,13 @@ models:
         description: "Unique customer identifier."
         tests: [not_null, unique]
       - name: full_name
-      - name: email
+        description: "The full name of the customer"
+        tests: [not_null]
+      - name: email 
+        description: "The unique email address of the customer"
+        tests: [not_null, unique]
       - name: join_date
+        description: "The first date the customer joined sales record"
 
   - name: stg_orders
     description: "orders dataset from raw.dec_raw.orders."
