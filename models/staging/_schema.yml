@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: "customers dataset from raw.dec_raw.customers."
+    columns:
+      - name: customer_id
+        description: "Unique customer identifier."
+        tests: [not_null, unique]
+      - name: full_name
+        description: "The full name of the customer"
+        tests: [not_null]
+      - name: email 
+        description: "The unique email address of the customer"
+        tests: [not_null]
+      - name: join_date
+        description: "The first date the customer joined sales record"
+
+  - name: stg_orders
+    description: "orders dataset from raw.dec_raw.orders."
+    columns:
+      - name: order_id
+        description: The unique identifier of each orders made
+        tests: 
+          - not_null
+          - unique
+      - name: customer_id
+        description: Identifier linking the order to a customer. Foreign key to `dim_customers` table
+      - name: order_date
+        description: Date and time when the order was placed by the customer.
+      - name: total_amount
+        description: Total monetary value of the order including taxes and shipping, before any discounts.
+        tests:
+          - greater_than:
+              value: 0
+
+
+  - name: stg_order_items
+    description: "Order line items from raw.dec_raw.order_items."
+    columns:
+      - name: order_item_id
+        description: "Unique identifier for each line item within an order"
+        tests: 
+          - not_null 
+          - unique
+      - name: order_id
+        description: "Foreign key to orders table, identifies the parent order"
+      - name: product_id
+        description: "Foreign key to products table, identifies the product ordered"
+      - name: quantity
+        description: "Number of units of this product ordered"  
+        tests:
+          - greater_than:
+              value: 0
+      - name: line_total
+        description: "Total price for this line item (quantity × unit price)"
+        tests:
+          - greater_than:
+              value: 0
+
+  - name: stg_products
+    description: "Products dimension from raw.dec_raw.products."
+    columns:
+    - name: product_id
+      description: "Unique identifier for each product"
+      tests: 
+       - not_null 
+       - unique
+    - name: product_name
+      description: "Display name of the product"
+    - name: category
+      description: "Product category or classification"
+    - name: price
+      description: "Current selling price per unit"
+      tests:
+        - greater_than:
+            value: 0
+
+  - name: stg_loyalty_points
+    description: "Loyalty points from raw.dec_raw.loyalty_points."
+    columns:
+    - name: loyalty_id
+      description: "Unique identifier for each loyalty transaction"
+      tests: [not_null, unique]
+    - name: customer_id
+      description: "Foreign key to customers table"
+    - name: points_earned
+      description: "Number of loyalty points earned in this transaction"
+      tests:
+        - greater_than:
+            value: 0
+    - name: transaction_date
+      description: "Date when the loyalty points were earned"
+    - name: source
+      description: "Source of the loyalty points (order, referral, promotion, etc.)"
+      tests:
+        - accepted_values:
+            values: ['Order', 'Referral', 'Promotion']
