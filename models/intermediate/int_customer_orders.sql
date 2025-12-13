@@ -1,11 +1,3 @@
-{{ block_prod_run(this.name) }}
-
-{{ config(
-    materialized = "table",
-    schema = "mart_{{ target.schema }}"
-) }}
-
-
 with orders as (
     select * from {{ ref('stg_orders') }}
 ),

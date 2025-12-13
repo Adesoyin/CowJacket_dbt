@@ -1,11 +1,8 @@
-Welcome to your new dbt project!
+### CowJacket DBT Project
 
-### Using the starter project
 
-Try running the following commands:
-- dbt run
-- dbt test
-
+## Model Architecture
+![alt text](https://avonhealthcareltd-my.sharepoint.com/:i:/r/personal/adebola_adesoyin_avonhealthcare_com/Documents/Pictures/dbt%20architecture.png?csf=1&web=1&e=pXdV6T)
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)

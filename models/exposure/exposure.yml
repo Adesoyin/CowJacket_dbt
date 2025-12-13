@@ -2,8 +2,8 @@ exposures:
   - name: LaunchMart_Analytics
     type: analysis
     depends_on:
-      - ref('fct_sales')
-      - ref('dim_date')
+      - ref('stg_customer')
+      - ref('stg_orders')
     owner:
       name: DEC Launchpad
       email: adeboladesoyin@gmail.com
