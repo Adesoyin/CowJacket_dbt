@@ -15,6 +15,8 @@ models:
         tests: [not_null]
       - name: join_date
         description: "The first date the customer joined sales record"
+      - name: etl_loaded_at
+        description: "The run time of the model"
 
   - name: stg_orders
     description: "orders dataset from raw.dec_raw.orders."
@@ -33,6 +35,8 @@ models:
         tests:
           - greater_than:
               value: 0
+      - name: etl_loaded_at
+        description: "The run time of the model"
 
 
   - name: stg_order_items
@@ -57,6 +61,8 @@ models:
         tests:
           - greater_than:
               value: 0
+      - name: etl_loaded_at
+        description: "The run time of the model"
 
   - name: stg_products
     description: "Products dimension from raw.dec_raw.products."
@@ -75,6 +81,8 @@ models:
       tests:
         - greater_than:
             value: 0
+    - name: etl_loaded_at
+      description: "The run time of the model view"
 
   - name: stg_loyalty_points
     description: "Loyalty points from raw.dec_raw.loyalty_points."
@@ -96,3 +104,5 @@ models:
       tests:
         - accepted_values:
             values: ['Order', 'Referral', 'Promotion']
+    - name: etl_loaded_at
+      description: "The run time of the model"
