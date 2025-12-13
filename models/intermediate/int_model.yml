@@ -1,0 +1,36 @@
+models:
+  - name: int_customer_orders
+    columns:
+      - name: customer_id
+        description: "the unique id of the customer"
+        data_tests:
+          - not_null
+      - name: order_id
+        description: "The id of the customer order"
+        data_tests:
+          - unique
+          - not_null
+      - name: order_date
+        description: "the order date of purchase"
+      - name: order_total
+        description: "total amount of the order bought by customer for each order id"
+      - name: item_count
+
+  - name: int_customers
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
+      - name: full_name
+        data_tests:
+          - not_null
+      - name: email
+        data_tests:
+          - not_null
+      - name: join_date
+        data_tests:
+          - not_null
+      - name: total_orders
+      - name: lifetime_value
+
