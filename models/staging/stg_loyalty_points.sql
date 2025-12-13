@@ -4,5 +4,5 @@ customer_id,
 points_earned, 
 transaction_date, 
 source,
-etl_loaded_at
+CURRENT_TIMESTAMP() as etl_loaded_at
 from {{ source ('dec_raw', 'loyalty_points') }}

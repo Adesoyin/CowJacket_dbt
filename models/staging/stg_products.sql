@@ -4,5 +4,5 @@ select
     product_name,
     category,
     price,
-    etl_loaded_at
+    CURRENT_TIMESTAMP() as etl_loaded_at
 from {{ source ('dec_raw', 'products') }}

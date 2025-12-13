@@ -38,16 +38,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   cow_jacket:
-    intermediate:
-      +materialized: view
-      +schema: "int_{{ target.schema }}"
-
-    marts:
-      +materialized: table
-      +schema: "mart_{{ target.schema }}"
-
     staging:
       +materialized: view
 
+    intermediate:
+      +materialized: table
+      +schema: "_int"
+
+    marts:
+      +materialized: table
+      +schema: "_mart"
+
 on-run-end:
-  - "{{ log_model_run(this.name, this.status, this.rowcount) }}"
+  - "{{ log_run_results(results) }}"
