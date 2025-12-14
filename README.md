@@ -2,7 +2,7 @@
 
 
 ## Model Architecture
-![alt text](https://avonhealthcareltd-my.sharepoint.com/:i:/r/personal/adebola_adesoyin_avonhealthcare_com/Documents/Pictures/dbt%20architecture.png?csf=1&web=1&e=pXdV6T)
+![Model architecture](file:///C:/Users/adebola.adesoyin/OneDrive%20-%20Avon%20Healthcare%20Ltd/Pictures/dbt%20architecture.png)
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
