@@ -3,7 +3,7 @@ models:
     description: This table contains the count od orders for each customer partitioned by the order date
     columns:
       - name: customer_id
-        description: "the unique id of the customer"
+        description: "The unique id of the customer"
         data_tests:
           - not_null
       - name: order_id
@@ -12,16 +12,16 @@ models:
           - unique
           - not_null
       - name: order_date
-        description: "the order date of purchase"
+        description: "The order date of purchase"
       - name: order_total
-        description: "total amount of the order bought by customer for each order id"
+        description: "Total amount of the order bought by customer for each order id"
       - name: item_count
 
   - name: int_customers
     description: This table contains information on the customers such as name, email and join date, and the total orders
     columns:
       - name: customer_id
-        description: This table contains basic information on the customers such as name, email and join date
+        description: This contains basic information on the customers such as name, email and join date
         data_tests:
           - unique
           - not_null
