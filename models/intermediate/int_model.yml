@@ -1,5 +1,6 @@
 models:
   - name: int_customer_orders
+    description: This table contains the count od orders for each customer partitioned by the order date
     columns:
       - name: customer_id
         description: "the unique id of the customer"
@@ -17,20 +18,27 @@ models:
       - name: item_count
 
   - name: int_customers
+    description: This table contains information on the customers such as name, email and join date, and the total orders
     columns:
       - name: customer_id
+        description: This table contains basic information on the customers such as name, email and join date
         data_tests:
           - unique
           - not_null
       - name: full_name
+        description: Name identifier of the customer containing first and last name
         data_tests:
           - not_null
       - name: email
+        description: The email address for the customer
         data_tests:
           - not_null
       - name: join_date
+        description: The first date the customer joined through order
         data_tests:
           - not_null
       - name: total_orders
+        description: The total count of orders for each customers so far
       - name: lifetime_value
+        description: The total amount order by a customer
 

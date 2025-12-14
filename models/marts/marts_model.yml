@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: The cleaned dimension table of the customers for analysis purpose
+    columns:
+      - name: customer_id
+        description: "the unique id of the customer"
+        data_tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: Name identifier of the customer containing first and last name
+        data_tests:
+          - not_null
+      - name: email
+        description: The email address for the customer
+        data_tests:
+          - not_null
+      - name: join_date
+        description: The first date the customer joined through order
+        data_tests:
+          - not_null
+      - name: total_orders
+        description: The total count of orders for each customers so far
+        data_tests:
+          - not_null
+      - name: lifetime_value
+        description: The total amount order by a customer
+        data_tests:
+          - not_null
+      - name: first_order_date
+        description: The first order date for a customer
+        data_tests:
+          - not_null
+      - name: last_order_date
+        description: The latest date the customer ordered product
+        data_tests:
+          - not_null
