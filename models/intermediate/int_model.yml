@@ -158,4 +158,21 @@ models:
         data_tests:
           - not_null
 
+  - name: int_customerloyalty_points
+    description: This intermediate table aggregates the total loyalty points earned by each customer and assigns them a corresponding loyalty tier.
+    columns:
+      - name: customer_id
+        description: The unique identifier for the customer.
+        data_tests:
+          - not_null
+          - unique
+      - name: full_name
+        description: The concatenated first and last name of the customer.
+        data_tests:
+          - not_null
+      - name: tier_total_points
+        description: The cumulative total of loyalty points a customer has accumulated.
+        data_tests:
+          - not_null
+
 

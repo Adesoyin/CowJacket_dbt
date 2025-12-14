@@ -37,3 +37,75 @@ models:
         description: The latest date the customer ordered product
         data_tests:
           - not_null
+
+  - name: tbl_customer_rank
+    description: A materialized table that ranks customers based on their total lifetime spending or total revenue generated.
+    columns:
+      - name: customer_id
+        description: The unique identifier for the customer.
+        data_tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: The first and last name of the customer.
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: The cumulative total monetary amount spent by the customer across all their orders (lifetime value).
+        data_tests:
+          - not_null
+      - name: spend_rank
+        description: A numerical rank indicating the customer's spending position relative to all other customers (Rank 1 being the highest spender).
+        data_tests:
+          - not_null
+
+  - name: dim_products
+    description: A dimension table containing standardized product information and categorization.
+    columns:
+      - name: product_id
+        description: The unique identifier for each product.
+        data_tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: The marketing name of the product.
+        data_tests:
+          - not_null
+      - name: sub_category
+        description: A granular categorization of the product (e.g., 'Computer Accessories').
+        data_tests:
+          - not_null
+      - name: product_category
+        description: The high-level main category of the product (e.g., 'Electronics').
+        data_tests:
+          - not_null
+      - name: price
+        description: The standardized list price of the product.
+        data_tests:
+          - not_null
+      - name: etl_loaded_at
+        description: The timestamp when this record was last processed and loaded by the ETL/dbt pipeline.
+        data_tests:
+          - not_null
+
+  - name: tbl_customer_loyalty_tiers
+    description: A table summarizing customer loyalty status, including their assigned tier based on points accumulated and the count of unique loyalty point events.
+    columns:
+      - name: customer_id
+        description: The unique identifier for the customer.
+        data_tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: The first and last name of the customer.
+        data_tests:
+          - not_null
+      - name: tier
+        description: The loyalty tier assigned to the customer based on accumulated points (e.g., Bronze, Silver, Gold).
+        data_tests:
+          - not_null
+      - name: tier_count
+        description: The total count of distinct loyalty point accrual events or transactions associated with this customer.
+      - name: tier_total_points
+        description: The total sum of loyalty point accrual events or transactions associated with this customer.
+
