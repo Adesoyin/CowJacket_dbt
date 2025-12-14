@@ -41,4 +41,35 @@ models:
         description: The total count of orders for each customers so far
       - name: lifetime_value
         description: The total amount order by a customer
+  - name: int_date
+    description: The date table created from stg_order
+    columns:
+      - name: order_date
+        description: All order date from the stg-order table
+        data_tests:
+          - not_null
+      - name: year1
+        description: Year extracted from the order date
+        data_tests:
+          - not_null
+      - name: month1
+        description: This returns month number as a string
+        data_tests:
+          - not_null
+      - name: monthname
+        description: MMMM' for full month name
+        data_tests:
+          - not_null
+      - name: day1
+        description: Returns day number as a number
+        data_tests:
+          - not_null
+      - name: weekday1
+        description: Day for weekday name
+        data_tests:
+          - not_null
+      - name: week1
+        description: Extract the week number in the year
+        data_tests:
+          - not_null
 
