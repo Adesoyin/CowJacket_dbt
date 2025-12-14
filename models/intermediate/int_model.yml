@@ -1,105 +1,161 @@
 models:
   - name: int_customer_orders
-    description: This table contains the count od orders for each customer partitioned by the order date
+    description: This table aggregates the count and value of orders for each customer, primarily structured around the order date.
     columns:
       - name: customer_id
-        description: "The unique id of the customer"
+        description: The unique identifier for the customer.
         data_tests:
           - not_null
       - name: order_id
-        description: "The id of the customer order"
+        description: The unique identifier for a specific customer transaction (order).
         data_tests:
           - unique
           - not_null
       - name: order_date
-        description: "The order date of purchase"
+        description: The calendar date when the purchase was made.
       - name: order_total
-        description: "Total amount of the order bought by customer for each order id"
+        description: The total monetary value of the entire order placed by the customer.
       - name: item_count
+        description: The total quantity of distinct items or products within this specific order.
 
   - name: int_customers
-    description: This table contains information on the customers such as name, email and join date, and the total orders
+    description: This table contains core information about customers, including contact details, join date, and calculated lifetime metrics.
     columns:
       - name: customer_id
-        description: This contains basic information on the customers such as name, email and join date
+        description: The unique identifier for the customer.
         data_tests:
           - unique
           - not_null
       - name: full_name
-        description: Name identifier of the customer containing first and last name
+        description: The customer's concatenated first and last name.
         data_tests:
           - not_null
       - name: email
-        description: The email address for the customer
+        description: The primary email address used for customer contact.
         data_tests:
           - not_null
       - name: join_date
-        description: The first date the customer joined through order
+        description: The date the customer placed their first order and joined the platform.
         data_tests:
           - not_null
       - name: total_orders
-        description: The total count of orders for each customers so far
+        description: The cumulative count of all orders placed by this customer across their lifetime.
       - name: lifetime_value
-        description: The total amount order by a customer
+        description: The total monetary amount spent by the customer across all their orders.
 
   - name: int_date
-    description: The date table created from stg_order
+    description: A dimension table derived from order dates, providing granular time attributes for analysis.
     columns:
       - name: order_date
-        description: All order date from the stg-order table
+        description: The specific calendar date from the source orders data.
         data_tests:
           - not_null
       - name: year1
-        description: Year extracted from the order date
+        description: The four-digit year extracted from the order date.
         data_tests:
           - not_null
       - name: month1
-        description: This returns month number as a string
+        description: The numeric representation of the month (e.g., 1 for January, 12 for December).
         data_tests:
           - not_null
       - name: monthname
-        description: MMMM' for full month name
+        description: The full name of the month (e.g., January, December).
         data_tests:
           - not_null
       - name: day1
-        description: Returns day number as a number
+        description: The numeric day of the month (1-31).
         data_tests:
           - not_null
       - name: weekday1
-        description: Day for weekday name
+        description: The full name of the day of the week (e.g., Monday, Sunday).
         data_tests:
           - not_null
       - name: week1
-        description: Extract the week number in the year
+        description: The week number within the year.
         data_tests:
           - not_null
 
   - name: int_product
-    description: The staging product table
+    description: A dimension table containing standardized product information and categorization.
     columns:
       - name: product_id
-        description: The unique identifier of each product in the table
+        description: The unique identifier for each product.
         data_tests:
           - unique
           - not_null
       - name: product_name
-        description: The unique product name of the product id
+        description: The marketing name of the product.
         data_tests:
           - not_null
-      - name: SUB_CATEGORY
-        description: The sub category of the product
+      - name: sub_category
+        description: A granular categorization of the product (e.g., 'Computer Accessories').
         data_tests:
           - not_null
       - name: product_category
-        description: The main product category
+        description: The high-level main category of the product (e.g., 'Electronics').
         data_tests:
           - not_null
       - name: price
-        description: The list price of each product
+        description: The standardized list price of the product.
         data_tests:
           - not_null
       - name: etl_loaded_at
-        description: The last etl loaded date for the table during transformation dbt
+        description: The timestamp when this record was last processed and loaded by the ETL/dbt pipeline.
         data_tests:
           - not_null
+
+
+  - name: int_orderdetails
+    description: This table contains all the order details for all periods, including product, customer, and pricing information.
+    columns:
+      - name: order_item_id
+        description: Primary key for the specific item within an order (a surrogate key for each row).
+        data_tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Foreign key linking to the main orders table. Identifies the specific transaction the item belongs to.
+        data_tests:
+          - not_null
+      - name: product_id
+        description: Foreign key linking to the products dimension table. Identifies the specific product purchased.
+        data_tests:
+          - not_null
+      - name: quantity
+        description: The number of units of this product included in this specific order item.
+        data_tests:
+          - not_null
+      - name: line_total
+        description: The total monetary value for this specific line item (quantity * price).
+        data_tests:
+          - not_null
+      - name: product_name
+        description: The name of the product purchased (denormalized from the product dimension).
+        data_tests:
+          - not_null
+      - name: category
+        description: The category the product belongs to (e.g., Electronics, Fashion).
+        data_tests:
+          - not_null
+      - name: price
+        description: The unit price of the product at the time of the order.
+        data_tests:
+          - not_null
+      - name: order_date
+        description: The date the order was placed. Used for partitioning and time-series analysis.
+        data_tests:
+          - not_null
+      - name: customer_id
+        description: Foreign key linking to the customer dimension table. Identifies the customer who placed the order.
+        data_tests:
+          - not_null
+      - name: full_name
+        description: The full name of the customer (denormalized from the customer dimension).
+        data_tests:
+          - not_null
+      - name: total_amount
+        description: The final total monetary value of the entire order (sum of all line items for the order_id).
+        data_tests:
+          - not_null
+
 
