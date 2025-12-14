@@ -41,6 +41,7 @@ models:
         description: The total count of orders for each customers so far
       - name: lifetime_value
         description: The total amount order by a customer
+
   - name: int_date
     description: The date table created from stg_order
     columns:
@@ -70,6 +71,35 @@ models:
           - not_null
       - name: week1
         description: Extract the week number in the year
+        data_tests:
+          - not_null
+
+  - name: int_product
+    description: The staging product table
+    columns:
+      - name: product_id
+        description: The unique identifier of each product in the table
+        data_tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: The unique product name of the product id
+        data_tests:
+          - not_null
+      - name: SUB_CATEGORY
+        description: The sub category of the product
+        data_tests:
+          - not_null
+      - name: product_category
+        description: The main product category
+        data_tests:
+          - not_null
+      - name: price
+        description: The list price of each product
+        data_tests:
+          - not_null
+      - name: etl_loaded_at
+        description: The last etl loaded date for the table during transformation dbt
         data_tests:
           - not_null
 
