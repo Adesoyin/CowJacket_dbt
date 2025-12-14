@@ -7,20 +7,21 @@ This project uses dbt + Snowflake to standardize transformations, enforce data q
 
 Following a 3‑layer modeling approach in all environments (dev, staging, prod): Each environment contains separate schemas for isolation and safety:
 
-- staging – cleaned, lightly transformed source data: <schema>_STG
+- staging – cleaned, lightly transformed source data: dbt_Adesoyin_STG
 
-- intermediate – reusable transformations and fact-level logic: <schema>_INT
+- intermediate – reusable transformations and fact-level logic: dbt_staging_INT
 
 - marts – analytics-ready, business-facing tables: <schema>_MART
 
-Environment	Database	Purpose
-dev	CANALYTICS	Local development & testing
-staging	ANALYTICS_STAGING	CI runs & validation
-production	ADEFACTORY_PROD	Final analytics tables
+| Environment | Database | Purpose |
+|-------------|----------|---------|
+| dev | CANALYTICS | Local development & testing |
+| staging | ANALYTICS_STAGING | CI runs & validation |
+| production | ADEFACTORY_PROD | Final analytics tables |
 
 Some guarded models (e.g. fact_sales) is enabled only in staging and write directly to production.
 
-**Guardrails**
+### Guardrails
 
 - Production-only models are controlled using enabled: (target.name == 'staging')
 
@@ -36,7 +37,7 @@ Some guarded models (e.g. fact_sales) is enabled only in staging and write direc
 
 - dbt run metadata is logged for monitoring and debugging in canalytics database table
 
-**👉 dbt Docs**
+### 👉 dbt Docs
 
 Using `dbt docs generate`, Dbt Cloud Documentation was generated and can be [found here](https://uk863.us1.dbt.com/api/ide/v2/70471824433358/legacy/files/docs/index.html#!/model/model.cow_jacket.int_customers)
 
