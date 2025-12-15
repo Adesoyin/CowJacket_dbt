@@ -7,13 +7,13 @@ sources:
 
     tables:
       - name: customers
-        description: This table contains basic information on the customers such as name, email and join date
+        description: This table contains basic information on the customers such as name, email and join date- Raw customer table
       - name: loyalty_points
-        description: This table contains information on the loyalty points given to customers based on their different order
+        description: This table contains information on the loyalty points given to customers based on their different order-Raw loyalty point table
       - name: order_items
-        description: This table contains the different prices for each item ordered by the customers
+        description: This table contains the different prices for each item ordered by the customers- Raw order items table
       - name: orders
-        description: This table contains the aggregated order for each customer per every sales encounter
+        description: This table contains the aggregated order for each customer per every sales encounter-Raw order table
         config: 
           freshness:
             warn_after:
@@ -24,4 +24,4 @@ sources:
               period: day
           loaded_at_field: _order_date
       - name: products
-        description: This table contains basic information on all the products from the Mart
+        description: This table contains basic information on all the products from the Mart-Raw Product table
