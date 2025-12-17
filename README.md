@@ -61,6 +61,8 @@ Using `dbt docs generate`, Dbt Cloud Documentation was generated and can be [fou
 
 ## CI & Promotion Strategy (Appendix)
 
+Additional data were added to the raw tables and tested using the CI pull request Job to see update on the prod database.
+
 CI job runs automatically on pull requests to main
 
 CI executes in the staging environment
