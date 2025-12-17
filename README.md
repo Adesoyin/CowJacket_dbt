@@ -53,11 +53,13 @@ Using `dbt docs generate`, Dbt Cloud Documentation was generated and can be [fou
 
 
 ## Appendix
-Following direct promotion strategy, the CI job is triggered automatically for every pull request in staging environment. 
+Following direct promotion strategy, the CI job is triggered automatically for every pull request in staging environment:
 
 <img width="1582" height="803" alt="image" src="https://github.com/user-attachments/assets/b856151c-e1bb-4c53-b926-353cd9926cf2" />
 
-When automatically approved after merge to main branch, models are promoted directly to production.
+When automatically approved after merge to main branch, models are promoted directly to production:
 
 <img width="1446" height="803" alt="image" src="https://github.com/user-attachments/assets/ece47bd7-fcf8-4c59-9734-ada9c49239b6" />
 
+During merge request:
+<img width="944" height="336" alt="image" src="https://github.com/user-attachments/assets/eac7b8e1-a02d-44c0-9fd8-e70b532e6ff0" />
