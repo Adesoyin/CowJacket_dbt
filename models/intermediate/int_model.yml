@@ -174,5 +174,7 @@ models:
         description: The cumulative total of loyalty points a customer has accumulated.
         data_tests:
           - not_null
-
+          
+  - name: fact_sales
+    description: "Fact table containing sales transactions. Enabled only in production."
 

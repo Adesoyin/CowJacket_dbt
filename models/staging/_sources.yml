@@ -22,6 +22,6 @@ sources:
             error_after:
               count: 1
               period: day
-          loaded_at_field: _order_date
+          loaded_at_field: order_date
       - name: products
         description: This table contains basic information on all the products from the Mart-Raw Product table

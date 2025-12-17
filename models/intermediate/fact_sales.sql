@@ -1,5 +1,5 @@
 {{ config(
-    materialized = 'table',
+    materialized = 'table' if target.name == 'prod' else 'no_op_materialization',
     schema = 'MART',
     enabled = (target.name == 'prod')
 ) }}
