@@ -108,6 +108,7 @@ models:
         description: The total count of distinct loyalty point accrual events or transactions associated with this customer.
       - name: tier_total_points
         description: The total sum of loyalty point accrual events or transactions associated with this customer.
+        
   - name: dim_date
     description: A date dimension table used for time-series analysis, providing descriptive attributes for each order date.
     columns:
@@ -137,6 +138,15 @@ models:
           - not_null
       - name: order_week_number
         description: The ISO week number of the year (1-53).
+        data_tests:
+          - not_null
+
+  - name: tier_group
+    columns:
+      - name: tier
+        data_tests:
+          - not_null
+      - name: customer_count
         data_tests:
           - not_null
 
