@@ -4,8 +4,9 @@ exposures:
   - name: LaunchMart_Analytics
     type: analysis
     depends_on:
-      - ref('stg_customer')
-      - ref('stg_orders')
+      - ref('tbl_customer_rank')
+      - ref('dim_customers')
+      - ref('int_orderdetails')
 
     owner:
       name: DEC Launchpad
