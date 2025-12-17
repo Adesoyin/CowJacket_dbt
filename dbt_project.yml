@@ -43,11 +43,11 @@ models:
 
     intermediate:
       +materialized: table
-      +schema: "_int"
+      +schema: "int"
 
     marts:
       +materialized: table
-      +schema: "_mart"
+      +schema: "mart"
 
     example:  
       my_first_dbt_model:
