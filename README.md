@@ -57,7 +57,7 @@ This supports performance monitoring, debugging, and auditability.
 
 ### dbt Docs
 
-Using `dbt docs generate`, Dbt Cloud Documentation was generated and can be [found here](https://uk863.us1.dbt.com/api/ide/v2/70471824433358/legacy/files/docs/index.html#!/model/model.cow_jacket.int_customers)
+Using `dbt docs generate`, Dbt Cloud Documentation was generated and can be [found here](https://uk863.us1.dbt.com/api/ide/v2/70471824442676/legacy/files/docs/index.html#!/overview)
 
 ## CI & Promotion Strategy (Appendix)
 
