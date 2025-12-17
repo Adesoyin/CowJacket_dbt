@@ -49,11 +49,5 @@ models:
       +materialized: table
       +schema: "mart"
 
-    example:  
-      my_first_dbt_model:
-        +enabled: false
-      my_second_dbt_model:
-        +enabled: false
-
 on-run-end:
   - "{{ log_run_results(results) }}"
