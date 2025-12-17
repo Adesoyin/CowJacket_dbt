@@ -1,6 +1,6 @@
 {{ config(
     materialized = 'table',
-    schema = 'DBT_PROD_MART',
+    schema = 'MART',
     enabled = (target.name == 'prod')
 ) }}
 
