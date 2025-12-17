@@ -1,8 +1,7 @@
 {{ config(
     materialized = 'table',
-    enabled = (target.name == 'staging'),
-    database = 'ADEFACTORY_PROD',
-    schema = 'DBT_PROD_MART'
+    schema = 'DBT_PROD_MART',
+    enabled = (target.name == 'prod')
 ) }}
 
 
